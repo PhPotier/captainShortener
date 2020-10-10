@@ -25,7 +25,13 @@ DELETE {base_url}/api/{short_url}
 
 ## About Captain Shortener cmd
 
-
+<p> 
+   php artisan url:shorten {URL}
+</p>
+<br/>
+<p>
+    {URL} must be correctly formated like "https://github.com/" or cmd will throw you an error.
+</p>
 ## About Captain Shortener site
 
 

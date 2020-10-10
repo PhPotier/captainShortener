@@ -44,10 +44,13 @@ class shortenUrl extends Command
 
         $urlCheck = Url::where('origin_url', strtolower($url))->get()->last();
 
-        if (filter_var($url, FILTER_VALIDATE_URL) === FALSE) {
+        //check if it's a correct URL 
+        if(filter_var($url, FILTER_VALIDATE_URL) === FALSE){
             $this->error('this isn\'t a valid URL');
             return false;
         }
+
+        //check if already exist
         if($urlCheck){
             $this->line('this shorter URL already exist, and is : '. $urlCheck->short_full_url);
         }
@@ -57,7 +60,6 @@ class shortenUrl extends Command
             $this->line('Your shorter URL is : '. $urlCreated->short_full_url);
         }
       
-
         return true;
     }
 }
