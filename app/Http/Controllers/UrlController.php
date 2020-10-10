@@ -4,11 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Url;
 use Illuminate\Http\Request;
+use App\Http\Traits\UrlTrait;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
 
 class UrlController extends Controller
 {
+    use UrlTrait;
+
     public function index(){
         return response()->json(Url::all(),200);
     }
@@ -24,11 +27,7 @@ class UrlController extends Controller
             ], 400);
         }
 
-        $url = new Url();
-        $url->origin_url = $request->url;
-        $url->short_url = hash('crc32', $request->url);
-        $url->type = 1;
-        $url->save();
+        $url = UrlTrait::createUrl($request->url);
 
         return response()->json($url->short_full_url,200);    
     }
