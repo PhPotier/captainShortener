@@ -12,16 +12,29 @@ class UrlController extends Controller
 {
     use UrlTrait;
 
+    /**
+     * ##API##
+     * Send list of long and short URL in DB 
+     * 
+     * @return Json
+     */
     public function index(){
         return response()->json(Url::all(),200);
     }
 
+    /**
+     * ##API##
+     * Store new URL
+     * @param Request $request
+     * 
+     * @return Json
+     */
     public function store(Request $request){
         $validator = Validator::make($request->all(), [
             'url' => 'required|active_url|unique:urls,origin_url',
         ]);
 
-        if ($validator->fails()) {
+        if($validator->fails()){
             return response()->json([
                 'error' => $validator->errors()
             ], 400);
@@ -32,7 +45,15 @@ class UrlController extends Controller
         return response()->json($url->short_full_url,200);    
     }
 
-    public function show($url){
+    /**
+     * ##Site##
+     * redirect from a short url
+     * 
+     * @param String $url
+     * 
+     * @return Redirect
+     */
+    public function show(string $url){
         $urlRedirect = Url::where('short_url', strtolower($url))->get()->last();
 
         if($urlRedirect){
@@ -40,6 +61,7 @@ class UrlController extends Controller
             $urlRedirect->hits += 1;
             $urlRedirect->save();
 
+            //redirect to long URL
             $url = $urlRedirect->origin_url;
             return Redirect::to($url);
         }
@@ -48,7 +70,14 @@ class UrlController extends Controller
         }
     }
 
-    public function delete($url){
+    /**
+     * ##API##
+     * Delete an entry
+     * @param String $url
+     * 
+     * @return Json
+     */
+    public function delete(String $url){
         $urlRedirect = Url::where('short_url', strtolower($url))->get()->last();
 
         if($urlRedirect){
@@ -61,8 +90,15 @@ class UrlController extends Controller
         }
     }
 
+    /**
+     * ##Site##
+     * Display stats
+     * @return View
+     */
     public function stats(){
         $urls = Url::select('hits', 'origin_url')->get();
+
+        //format DataSets from alls entries in DB 
         $dataSets = array();
         foreach($urls as $url){
             $dataToSend =  [
@@ -73,6 +109,7 @@ class UrlController extends Controller
             array_push($dataSets, $dataToSend);
         }       
 
+        //create chart from https://www.chartjs.org/
         $chartjs = app()->chartjs
                 ->name('barChartTest')
                 ->type('bar')

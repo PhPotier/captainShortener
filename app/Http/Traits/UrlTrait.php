@@ -7,6 +7,13 @@ use Mremi\UrlShortener\Provider\Baidu\BaiduProvider;
 
 trait UrlTrait{
 
+    /**
+     * Create a new entry in DB from Url long
+     * @param string $urlLong
+     * @param boolean $crc
+     * 
+     * @return Url $url
+     */
     public static function createUrl($urlLong, $crc = false){ 
         $url = new Url();
         $url->origin_url = $urlLong;
@@ -23,6 +30,11 @@ trait UrlTrait{
         return $url;
     }
 
+    /**
+     * Generate unique string and check if already exist in DB 
+     * 
+     * @return String $potentialUniqueString
+     */
     public static function createUniqueString(){
         do{
             $potentialUniqueString = bin2hex(random_bytes(5));
