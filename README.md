@@ -32,6 +32,7 @@ DELETE {base_url}/api/{short_url}
 <p>
     {URL} must be correctly formated like "https://github.com/" or cmd will throw you an error.
 </p>
+
 ## About Captain Shortener site
 
 
