@@ -2,9 +2,7 @@
 
 <P>
     Before start you can populate DB with 
-    <pre>
-        php artisan db:seed
-    </pre>
+    <pre>php artisan db:seed</pre>
 </p>
 
 ## About Captain Shortener API
@@ -37,7 +35,7 @@ DELETE {base_url}/api/{short_url}
 <p>
     {base_url}/stats/
     <br/>
-    Display stats for numbers of rediction for each Urls
+    Display stats for numbers of redirection for each Urls
 </p>
 <p>
     {base_url}/all/
