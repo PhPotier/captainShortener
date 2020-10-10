@@ -42,7 +42,7 @@ class shortenUrl extends Command
     {
         $url = $this->argument('url');
 
-        $urlCheck = Url::where('origin_url', strtolower($url))->get()->last();
+        $urlCheck = Url::where('origin_url', $url)->get()->last();
 
         //check if it's a correct URL 
         if(filter_var($url, FILTER_VALIDATE_URL) === FALSE){
