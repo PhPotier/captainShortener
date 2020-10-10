@@ -14,6 +14,7 @@ use App\Http\Controllers\UrlController;
 |
 */
 Route::get('/stats', \UrlController::class.'@stats');
+Route::get('/all', \UrlController::class.'@displayUrls');
 Route::get('/{url}', \UrlController::class.'@show');
 
 

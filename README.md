@@ -1,5 +1,11 @@
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
+<P>
+    Before start you can populate DB with 
+    <pre>
+        php artisan db:seed
+    </pre>
+</p>
 
 ## About Captain Shortener API
 
@@ -28,7 +34,21 @@ DELETE {base_url}/api/{short_url}
 </p>
 
 ## About Captain Shortener site
-
+<p>
+    {base_url}/stats/
+    <br/>
+    Display stats for numbers of rediction for each Urls
+</p>
+<p>
+    {base_url}/all/
+    <br/>
+    Display all long and short Urls related
+</p>
+<p>
+    {base_url}/{short_url}
+    <br/>
+    Redirect to long URL 
+</p>
 
 ## License
 

@@ -46,6 +46,26 @@ class UrlController extends Controller
     }
 
     /**
+     * ##API##
+     * Delete an entry
+     * @param String $url
+     * 
+     * @return Json
+     */
+    public function delete(String $url){
+        $urlRedirect = Url::where('short_url', strtolower($url))->get()->last();
+
+        if($urlRedirect){
+            $urlRedirect->delete();
+         
+            return  response()->json('URL DELETED',200);
+        }
+        else{
+            return  response()->json('URL NOT FOUND',404);
+        }
+    }
+
+    /**
      * ##Site##
      * redirect from a short url
      * 
@@ -67,26 +87,6 @@ class UrlController extends Controller
         }
         else{
             return view('404');
-        }
-    }
-
-    /**
-     * ##API##
-     * Delete an entry
-     * @param String $url
-     * 
-     * @return Json
-     */
-    public function delete(String $url){
-        $urlRedirect = Url::where('short_url', strtolower($url))->get()->last();
-
-        if($urlRedirect){
-            $urlRedirect->delete();
-         
-            return  response()->json('URL DELETED',200);
-        }
-        else{
-            return  response()->json('URL NOT FOUND',404);
         }
     }
 
@@ -119,5 +119,15 @@ class UrlController extends Controller
                 ->options([]);
 
         return view('stats', compact('chartjs'));
+    }
+
+    /**
+     * ##Site##
+     * Display all URLS for users
+     * 
+     * @return View
+     */
+    public function displayUrls(){
+        return view('display', ['data' => Url::all()]);
     }
 }
