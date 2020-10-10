@@ -20,7 +20,7 @@ DELETE {base_url}/api/{short_url}
 ## About Captain Shortener cmd
 
 <p> 
-   php artisan url:shorten {URL}
+   <pre>   php artisan url:shorten {URL} </pre>
 </p>
 <br/>
 <p>
