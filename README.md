@@ -23,19 +23,20 @@ DELETE {base_url}/api/{short_url}
 </ul>
 
 ## About Captain Shortener cmd
-
+<p>Store a new URL entry in Db and give you the shorten link :</p>
 <p> 
    <pre>   php artisan url:shorten {URL} </pre>
 </p>
-<p>Store a new URL entry in Db and give you the shorten link</p>
+<br/>
+<p>URL is an optional argument, if you don't use it, it will delete all entries after confirmation :</p>
 <p> 
    <pre>   php artisan url:delete {URL?} </pre>
 </p>
-<p>URL is an optional argument, if you don't use it, it will delete all entries after confirmation</p>
+<br/>
+<p>Seed the DB with default URLs in config/urls.php :</p>
 <p> 
    <pre>   php artisan url:seed </pre>
 </p>
-<p>Seed the DB with default URLs in config/urls.php</p>
 <br/>
 <p style="font-weight:bold">
     {URL} must be correctly formated like "https://github.com/" or cmd will throw you an error.
@@ -47,11 +48,13 @@ DELETE {base_url}/api/{short_url}
     <br/>
     Display stats for numbers of redirection for each Urls
 </p>
+<br/>
 <p>
     {base_url}/all/
     <br/>
     Display all long and short Urls related
 </p>
+<br/>
 <p>
     {base_url}/{short_url}
     <br/>
