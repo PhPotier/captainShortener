@@ -15,7 +15,7 @@ class CreateUrlsTable extends Migration
     {
         Schema::create('urls', function (Blueprint $table) {
             $table->id();
-            $table->longText('origin_url');
+            $table->string('origin_url',200)->unique();
             $table->string('short_url')->unique();
             $table->tinyInteger('type');
             $table->integer('hits')->default(0);

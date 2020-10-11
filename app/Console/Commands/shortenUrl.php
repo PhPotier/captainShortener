@@ -52,12 +52,12 @@ class shortenUrl extends Command
 
         //check if already exist
         if($urlCheck){
-            $this->line('this shorter URL already exist, and is : '. $urlCheck->short_full_url);
+            $this->info('this shorter URL already exist, and is : '. $urlCheck->short_full_url);
         }
         else{
             $urlCreated = UrlTrait::createUrl($url);
 
-            $this->line('Your shorter URL is : '. $urlCreated->short_full_url);
+            $this->info('Your shorter URL is : '. $urlCreated->short_full_url);
         }
       
         return true;

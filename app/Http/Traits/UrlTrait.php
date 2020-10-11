@@ -15,19 +15,24 @@ trait UrlTrait{
      * @return Url $url
      */
     public static function createUrl($urlLong, $crc = false){ 
-        $url = new Url();
-        $url->origin_url = $urlLong;
-        if($crc){
-            $url->short_url = hash('crc32', $urlLong);
-            $url->type = 0;
+        if(Url::where('origin_url', $urlLong)->count() === 0){
+            $url = new Url();
+            $url->origin_url = $urlLong;
+            if($crc){
+                $url->short_url = hash('crc32', $urlLong);
+                $url->type = 0;
+            }
+            else{
+                $url->short_url = self::createUniqueString();
+                $url->type = 1;
+            }
+            $url->save();
+    
+            return $url;
         }
         else{
-            $url->short_url = self::createUniqueString();
-            $url->type = 1;
+            return false;
         }
-        $url->save();
-
-        return $url;
     }
 
     /**
