@@ -18,13 +18,19 @@ POST {base_url}/api/
      <li>
 DELETE {base_url}/api/{short_url}
     </li>
-
 </ul>
 
 ## About Captain Shortener cmd
 
 <p> 
    <pre>   php artisan url:shorten {URL} </pre>
+</p>
+<p> 
+   <pre>   php artisan url:delete {URL?} </pre>
+</p>
+<p>URL is an optional argument, if you don't use it, it will delete all entries after confirmation</p>
+<p> 
+   <pre>   php artisan url:seed </pre>
 </p>
 <br/>
 <p>
