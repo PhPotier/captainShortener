@@ -13,14 +13,7 @@ class UrlSeeder extends Seeder
      */
     public function run()
     {
-        $urls = [
-            'https://www.linkedin.com/in/philippe-potier/',
-            'https://www.captainwallet.com/',
-            'https://www.youtube.com/watch?v=wLoWd2KyUro',
-            'https://github.com/PhPotier',
-            'https://gitlab.com/PPotier'
-        ];
-
+        $urls = config('urls.defaults_Urls');
 
         foreach($urls as $url){
             UrlTrait::createUrl($url);

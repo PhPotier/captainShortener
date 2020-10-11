@@ -25,6 +25,7 @@ DELETE {base_url}/api/{short_url}
 <p> 
    <pre>   php artisan url:shorten {URL} </pre>
 </p>
+<p>Store a new URL entry in Db and give you the shorten link</p>
 <p> 
    <pre>   php artisan url:delete {URL?} </pre>
 </p>
@@ -32,8 +33,9 @@ DELETE {base_url}/api/{short_url}
 <p> 
    <pre>   php artisan url:seed </pre>
 </p>
+<p>Seed the DB with default URLs in config/urls.php</p>
 <br/>
-<p>
+<p style="font-weight:bold">
     {URL} must be correctly formated like "https://github.com/" or cmd will throw you an error.
 </p>
 
