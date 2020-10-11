@@ -18,7 +18,7 @@ POST {base_url}/api/
 <br/> &nbsp; parameter : <br/> &nbsp; url -> valid unique URL 
     </li>
      <li>
-DELETE {base_url}/api/{short_url}
+DELETE {base_url}/api/{short_url_sufix}
     </li>
 </ul>
 
