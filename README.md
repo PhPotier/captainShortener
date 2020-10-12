@@ -2,9 +2,9 @@
 
 <P>
     Before start you can populate DB with your own URLs or default by overwriting config/urls.php
-    <pre>php artisan db:seed</pre>
+    <pre>   php artisan db:seed</pre>
     Or
-   <pre>php artisan url:seed</pre>
+   <pre>   php artisan url:seed</pre>
 </p>
 
 ## About Captain Shortener API
